@@ -1,0 +1,7 @@
+---
+- hosts: dhcp_node
+  become: True
+  gather_facts: False
+
+  roles:
+    - role: dhcp-role
