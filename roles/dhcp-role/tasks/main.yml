@@ -13,15 +13,6 @@
     state: directory
     mode: 0755
 
-- name: add dhcp global config file
-  template:
-    src: dhcpd_global.conf.j2
-    dest: "{{ dhcp_config }}"
-    owner: root
-    group: root
-    mode: 0644
-
-## debug purpose
 #- debug: 
 #    msg: "{{ dhcp_subnets[item].name }}"
 #  with_items: "{{ dhcp_subnet_names }}"
@@ -36,6 +27,15 @@
   with_items: "{{ dhcp_subnet_names }}"
   vars:
     subnet: "{{ dhcp_subnets[item] }}"
+
+- name: add dhcp global config file
+  template:
+    src: dhcpd_global.conf.j2
+    dest: "{{ dhcp_config }}"
+    owner: root
+    group: root
+    mode: 0644
+    validate: "dhcpd -t -cf %s"
   notify: restart dhcp
 
 - name: restart dhcp service

@@ -80,7 +80,7 @@ subnet 10.5.1.0 netmask 255.255.255.0 {
 
 # Includes
 {% for include in dhcp_global_includes %}
-include "{{ dhcp_subnet_config }}/{{ include | basename }}";
+include "{{ dhcp_subnet_config }}/{{ include | basename }}.conf";
 {% endfor %}
 {% endif %}
 

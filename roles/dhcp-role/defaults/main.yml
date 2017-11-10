@@ -4,7 +4,7 @@ dhcp_global_other_options: []
 #dhcp_global_includes: []
 
 
-dhcp_global_includes: ['*.conf']
+dhcp_global_includes: "{{ dhcp_subnet_names }}"
 
 dhcp_subnet_names:
 ## eg.
