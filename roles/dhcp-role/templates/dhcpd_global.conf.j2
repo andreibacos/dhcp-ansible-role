@@ -1,0 +1,97 @@
+# {{ ansible_managed }}
+
+# Global options
+{% if dhcp_global_omapi_port is defined %}
+omapi-port {{ dhcp_global_omapi_port }};
+{% endif %}
+{% if dhcp_omapi_secret is defined %}
+key omapi_key {
+    algorithm HMAC-MD5;
+    secret "{{ dhcp_omapi_secret }}";
+};
+{% endif %}
+{% if dhcp_global_authoritative is defined %}
+{{ dhcp_global_authoritative }};
+{% endif %}
+{% if dhcp_global_log_facility is defined %}
+log-facility {{ dhcp_global_log_facility }};
+{% endif %}
+{% if dhcp_global_bootp is defined %}
+{{ dhcp_global_bootp }} bootp;
+{% endif %}
+{% if dhcp_global_booting is defined %}
+{{ dhcp_global_booting }} booting;
+{% endif %}
+{% if dhcp_global_next_server is defined %}
+next-server {{ dhcp_global_next_server}};
+{% endif %}
+{% if dhcp_global_filename is defined %}
+filename "{{ dhcp_global_filename }}";
+{% endif %}
+{% if dhcp_global_default_lease_time is defined %}
+default-lease-time {{ dhcp_global_default_lease_time }};
+{% endif %}
+{% if dhcp_global_max_lease_time is defined %}
+max-lease-time {{ dhcp_global_max_lease_time }};
+{% endif %}
+{% if dhcp_global_subnet_mask is defined %}
+option subnet-mask {{ dhcp_global_subnet_mask }};
+{% endif %}
+{% if dhcp_global_broadcast_address is defined %}
+option broadcast-address {{ dhcp_global_broadcast_address }};
+{% endif %}
+{% if dhcp_global_routers is defined %}
+option routers {{ dhcp_global_routers }};
+{% endif %}
+{% if dhcp_global_domain_name is defined %}
+option domain-name "{{ dhcp_global_domain_name }}";
+{% endif %}
+{% if dhcp_global_ntp_servers is defined %}
+{% if dhcp_global_ntp_servers is string %}
+option ntp-servers {{ dhcp_global_ntp_servers }};
+{% else %}
+option ntp-servers {{ dhcp_global_ntp_servers|join(', ') }};
+{% endif %}
+{% endif %}
+{% if dhcp_global_domain_name_servers is defined %}
+{% if dhcp_global_domain_name_servers is string %}
+option domain-name-servers {{ dhcp_global_domain_name_servers }};
+{% else %}
+option domain-name-servers {{ dhcp_global_domain_name_servers|join(', ') }};
+{% endif %}
+{% endif %}
+{% if dhcp_global_domain_search is defined %}
+{% if dhcp_global_domain_search is string %}
+option domain-search "{{ dhcp_global_domain_search }}";
+{% else %}
+option domain-search "{{ dhcp_global_domain_search|join('", "') }}";
+{% endif %}
+{% endif %}
+{% if dhcp_global_server_name is defined %}
+option server-name "{{ dhcp_global_server_name }}";
+{% endif %}
+{% for option in dhcp_global_other_options %}
+option {{ option }};
+{% endfor %}
+{% if dhcp_global_includes is defined %}
+
+subnet 10.5.1.0 netmask 255.255.255.0 {
+}
+
+# Includes
+{% for include in dhcp_global_includes %}
+include "{{ dhcp_subnet_config }}/{{ include | basename }}";
+{% endfor %}
+{% endif %}
+
+{% if dhcp_global_classes is defined %}
+# Classes
+{% for class in dhcp_global_classes %}
+class "{{ class.name }}" {
+{% if class.match is defined %}
+  {{ class.match }};
+{% endif %}
+}
+{% endfor %}
+{% endif %}
+

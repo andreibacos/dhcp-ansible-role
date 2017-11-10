@@ -1,0 +1,42 @@
+---
+- include_vars: Debian.yml
+
+- name: set config directory perms
+  file:
+    path: "{{ dhcp_config | dirname }}"
+    state: directory
+    mode: 0755
+
+- name: set subnet directory perms
+  file:
+    path: "{{ dhcp_subnet_config }}"
+    state: directory
+    mode: 0755
+
+- name: add dhcp global config file
+  template:
+    src: dhcpd_global.conf.j2
+    dest: "{{ dhcp_config }}"
+    owner: root
+    group: root
+    mode: 0644
+
+## debug purpose
+#- debug: 
+#    msg: "{{ dhcp_subnets[item].name }}"
+#  with_items: "{{ dhcp_subnet_names }}"
+
+- name: create subnet conf files
+  template:
+    src: subnet.conf.j2
+    dest: "{{ dhcp_subnet_config }}/{{ dhcp_subnets[item].name }}.conf"
+    mode: 0644
+    owner: root
+    group: root
+  with_items: "{{ dhcp_subnet_names }}"
+  vars:
+    subnet: "{{ dhcp_subnets[item] }}"
+  notify: restart dhcp
+
+- name: restart dhcp service
+  service: name={{ dhcp_service }} state=started enabled=true
