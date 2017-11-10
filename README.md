@@ -46,7 +46,7 @@ See the [dhcp-options(5)](http://linux.die.net/man/5/dhcp-options) man page for 
 | `dhcp_global_domain_name`         | The domain name the client should use when resolving host names         |
 | `dhcp_global_domain_search`       | A list of domain names too be used by the client to locate non-FQDNs(1) |
 | `dhcp_global_filename`            | Filename to request for boot                                            |
-| `dhcp_global_includes`            | List of config files to be included (from `dhcp_config_dir`)            |
+| `dhcp_global_includes`            | List of config files to be included (from `dhcp_config_dir`) (uses dhcp_subnet_names to include subnet definitions per servers rack)            |
 | `dhcp_global_max_lease_time`      | Maximum lease time in seconds                                           |
 | `dhcp_global_next_server`         | IP for boot server                                                      |
 | `dhcp_global_ntp_servers`         | List of IP addresses of NTP servers                                     |
@@ -85,20 +85,40 @@ Class names can be used in the definition of address pools (see below).
 The role variable `dhcp_subnets` contains a list of dicts, specifying the subnet declarations to be added to the DHCP configuration file. Every subnet declaration should have an `ip` and `netmask`, other options are not mandatory. We start this section with an example, a compelete overview of supported options follows.
 
 ```Yaml
+dhcp_subnet_names:
+  - rack_no_1
+  - rack_no_2
+```
+
+```Yaml
 dhcp_subnets:
-  - ip: 192.168.222.0
-    netmask: 255.255.255.128
+  rack_no_1:
+    name: 'rack_no_1'
+    ip: 192.168.50.0
+    netmask: 255.255.255.0
     domain_name_servers:
-      - 10.0.2.3
-      - 10.0.2.4
-    range_begin: 192.168.222.50
-    range_end: 192.168.222.127
-  - ip: 192.168.222.128
+      - 10.0.1.2
+      - 10.0.1.3
+    range_begin: 192.168.50.1
+    range_end: 192.168.50.127
+    routers: 192.168.50.252
+    dhcp_hosts:
+      - name: 'server-one'
+        mac: '11:22:33:44:55:66'
+      - name: 'server-two'
+        mac: 'aa:bb:cc:dd:ee:ff'
+  rack_no_2:
+    name: 'rack_no_2'
+    ip: 192.168.51.0
     default_lease_time: 3600
     max_lease_time: 7200
-    netmask: 255.255.255.128
-    domain_name_servers: 10.0.2.3
-    routers: 192.168.222.129
+    netmask: 255.255.255.0
+    routers: 192.168.51.252
+    dhcp_hosts:
+      - name: 'server_one'
+        mac: '1a:2b:3c:4d:5e:6f'
+      - name: 'server_two'
+        mac: 'aa:11:bb:22:cc:33'
 ```
 
 An alphabetical list of supported options in a subnet declaration:
@@ -120,6 +140,7 @@ An alphabetical list of supported options in a subnet declaration:
 | `routers`             | no       | IP address of the gateway for this subnet                             |
 | `server_name`         | no       | Server name sent to the client                                        |
 | `subnet_mask`         | no       | Overrides the `netmask` of the subnet declaration                     |
+| `dhcp_hosts`          | no       | List of hosts for static ip lease based on hw address                 |
 
 You can specify address pools within a subnet by setting the `pools` options. This allows you to specify a pool of addresses that will be treated differently than another pool of addresses, even on the same network segment or subnet. It is a list of dicts with the following keys, all of which are optional:
 
@@ -152,6 +173,10 @@ You can specify hosts that should get a fixed IP address based on their MAC by s
 | `name` | The name of the host                      |
 | `mac`  | The MAC address of the host               |
 | `ip`   | The IP address to be assigned to the host |
+
+**Obs.**: On this role, IP field is generated automatically based on U**xx** ID.
+
+**Obs.**: This behaviour can be overwritten by modifing fixed-address field in roles/dhcp-role/templates/subnet.conf.j2 file and using the following value {{ host.ip }}.
 
 ```Yaml
 dhcp_hosts:
