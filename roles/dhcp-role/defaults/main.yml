@@ -7,22 +7,54 @@ dhcp_global_other_options: []
 dhcp_global_includes: "{{ dhcp_subnet_names }}"
 
 dhcp_subnet_names:
-## eg.
-##  dhcp_subnet_names:
-##    - rack_no_1
-##    - rack_no_2
-
+  - rack_6
 
 dhcp_subnets:
-## eg.
-##  dhcp_subnet_names:
-##    rack_no_1:
-##      name: 
-##      ip:
-##      netmask:
-##      routers:
-##      dhcp_hosts:
-##        - name: 'server-one'
-##          mac: 
-##        - name: 'server-two'
-##          mac: 
+  rack_6:
+    name: 'rack_6'
+    ip: '10.6.0.0'
+    netmask: 255.255.255.0
+    routers: 10.6.0.252
+    dhcp_hosts:
+      - name: 'R06-U01'
+        mac: '9c:b6:54:8d:f9:55'
+      - name: R06-U03
+        mac: '9c:b6:54:8d:0a:ef'
+      - name: R06-U05
+        mac: '9c:b6:54:8d:2a:7d'
+      - name: R06-U07
+        mac: '9c:b6:54:8d:f9:7d'
+      - name: R06-U09
+        mac: '9c:b6:54:8d:f9:eb'
+      - name: R06-U11
+        mac: '9c:b6:54:8d:f9:ed'
+      - name: R06-U13
+        mac: 'a4:5d:36:ff:f2:51'
+      - name: R06-U15
+        mac: 'a4:5d:36:fe:1d:11'
+      - name: R06-U17
+        mac: '9c:b6:54:80:b8:9b'
+      - name: R06-U19
+        mac: '9c:b6:54:8d:ea:5f'
+      - name: R06-U21
+        mac: '9c:b6:54:8d:0a:23'
+      - name: R06-U23
+        mac: 'a4:5d:36:ff:14:91'
+      - name: R06-U25
+        mac: '9c:b6:54:8d:0a:23'
+      - name: R06-U27
+        mac: 'a4:5d:36:ff:24:8b'
+      - name: R06-U29
+        mac: 'a4:5d:36:ff:d3:43'
+      - name: R06-U31
+        mac: '9c:b6:54:8d:0a:19'
+      - name: R06-U33
+        mac: '9c:b6:54:8d:f9:e3'
+      - name: R06-U35
+        mac: '9c:b6:54:8d:f9:d5'
+      - name: R06-U37
+        mac: 'a4:5d:36:ff:e2:cd'
+      - name: R06-U39
+        mac: 'f4:ce:46:b2:9e:d4'
+      - name: R06-U40
+        mac: 'f4:ce:46:b2:1d:fe'

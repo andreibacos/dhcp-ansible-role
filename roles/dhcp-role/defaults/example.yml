@@ -1,0 +1,28 @@
+---
+#dhcp_subnets: []
+dhcp_global_other_options: []
+#dhcp_global_includes: []
+
+
+dhcp_global_includes: "{{ dhcp_subnet_names }}"
+
+dhcp_subnet_names:
+## eg.
+##  dhcp_subnet_names:
+##    - rack_no_1
+##    - rack_no_2
+
+
+dhcp_subnets:
+## eg.
+##  dhcp_subnet_names:
+##    rack_no_1:
+##      name: 
+##      ip:
+##      netmask:
+##      routers:
+##      dhcp_hosts:
+##        - name: 'server-one'
+##          mac: 
+##        - name: 'server-two'
+##          mac: 
