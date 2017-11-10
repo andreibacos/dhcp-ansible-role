@@ -12,7 +12,7 @@ Ansible role for setting up ISC DHCPD. The responsibilities of this role are to:
 Version 2.0.0 of this role uses features that are introduced in Ansible 2.0. Users of older versions of Ansible can use version 1.1.0 which has identical functionality. An overview of role compatibility:
 
 | Role version | Ansible version | Supported platform                         |
-| :---                              | :---                                                                    |
+| :---         | :---            | :---                                       |
 | 1.0.0        | >= 2.0          | Ubuntu 14.04, 16.04                        |
 
 Only the platforms on which the role was successfully tested are mentioned, but it should also work on other versions of these distributions. If you get it working on another platform, let me know and I will add it to the list.
