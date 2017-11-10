@@ -1,6 +1,6 @@
 # Ansible role `dhcp`
 
-Used as main starting point: ([bertvv/ansible-role-dhcp)](https://github.com/bertvv/ansible-role/dhcp)
+Used as main starting point: ([bertvv/ansible-role-dhcp)](https://github.com/bertvv/ansible-role-dhcp)
 
 Ansible role for setting up ISC DHCPD. The responsibilities of this role are to:
 
