@@ -4,7 +4,6 @@ Used as main starting point: ([bertvv/ansible-role-dhcp)](https://github.com/ber
 
 Ansible role for setting up ISC DHCPD. The responsibilities of this role are to:
 
-- Install packages
 - Manage configuration ([dhcpd.conf(5)](http://linux.die.net/man/5/dhcpd.conf))
 
 ## A note on compatibility
