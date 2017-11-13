@@ -1,8 +1,0 @@
----
-dhcp_config_dir: /etc/dhcp
-dhcp_config: /etc/dhcp/dhcpd.conf
-dhcp_service: isc-dhcp-server
-
-#dhcp_config_dir: /opt/dhcp-test
-#dhcp_config: /opt/dhcp-test/dhcpd.conf
-dhcp_subnet_config: "{{ dhcp_config_dir }}/subnets"

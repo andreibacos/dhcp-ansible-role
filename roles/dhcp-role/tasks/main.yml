@@ -1,6 +1,4 @@
 ---
-- include_vars: Debian.yml
-
 - name: set config directory perms
   file:
     path: "{{ dhcp_config | dirname }}"
@@ -38,5 +36,5 @@
     validate: "dhcpd -t -cf %s"
   notify: restart dhcp
 
-- name: restart dhcp service
+- name: ensure dhcp service is started and enabled on boot
   service: name={{ dhcp_service }} state=started enabled=true
