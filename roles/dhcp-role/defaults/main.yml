@@ -14,6 +14,8 @@ dhcp_subnets:
     name: 'rack_6'
     ip: '10.6.0.0'
     netmask: 255.255.255.0
+#    range_begin: 10.6.0.1
+#    range_end: 10.6.0.128
     routers: 10.6.0.252
     dhcp_hosts:
       - name: 'R06-U01'
@@ -41,7 +43,7 @@ dhcp_subnets:
       - name: R06-U23
         mac: 'a4:5d:36:ff:14:91'
       - name: R06-U25
-        mac: '9c:b6:54:8d:0a:23'
+        mac: '9c:b6:54:8d:f9:cd'
       - name: R06-U27
         mac: 'a4:5d:36:ff:24:8b'
       - name: R06-U29
