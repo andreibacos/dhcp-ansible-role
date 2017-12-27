@@ -3,6 +3,10 @@ dhcp_config_dir: /etc/dhcp
 dhcp_config: /etc/dhcp/dhcpd.conf
 dhcp_service: isc-dhcp-server
 
+dhcp_packages:
+  - isc-dhcp-server
+dhcp_packages_state: "installed"
+
 dhcp_subnet_config: "{{ dhcp_config_dir }}/subnets"
 
 #dhcp_subnets: []
@@ -14,15 +18,22 @@ dhcp_global_includes: "{{ dhcp_subnet_names }}"
 
 dhcp_subnet_names:
   - rack_6
+  - rack_3
+  - rack_4
+  - rack_5
+  - rack_1
+  - rack_2
 
 dhcp_subnets:
   rack_6:
     name: 'rack_6'
-    ip: '10.6.0.0'
+    ip: '10.106.0.0'
     netmask: 255.255.255.0
 #    range_begin: 10.6.0.1
 #    range_end: 10.6.0.128
-    routers: 10.6.0.252
+    routers: 10.106.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
     dhcp_hosts:
       - name: 'R06-U01'
         mac: '9c:b6:54:8d:f9:55'
@@ -66,3 +77,681 @@ dhcp_subnets:
         mac: 'f4:ce:46:b2:9e:d4'
       - name: R06-U40
         mac: 'f4:ce:46:b2:1d:fe'
+  rack_3:
+    name: 'rack_3'
+    ip: '10.103.0.0'
+    netmask: 255.255.255.0
+#    range_begin: 10.6.0.1
+#    range_end: 10.6.0.128
+    routers: 10.103.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
+    dhcp_hosts:
+      - mac: 08:9e:01:93:5f:fd
+        name: R03-U01-N01
+        ip: 10.103.0.1
+      - mac: 08:9e:01:93:60:06
+        name: R03-U01-N02
+        ip: 10.103.0.2
+      - mac: 08:9e:01:93:53:5e
+        name: R03-U01-N03
+        ip: 10.103.0.3
+      - mac: 08:9e:01:93:5e:e6
+        name: R03-U01-N04
+        ip: 10.103.0.4
+      - mac: 08:9e:01:a7:aa:bb
+        name: R03-U03-N01
+        ip: 10.103.0.5
+      - mac: 08:9e:01:a7:aa:7c
+        name: R03-U03-N02
+        ip: 10.103.0.6
+      - mac: 08:9e:01:a7:aa:fd
+        name: R03-U03-N03
+        ip: 10.103.0.7
+      - mac: 08:9e:01:a7:aa:67
+        name: R03-U03-N04
+        ip: 10.103.0.8
+      - mac: 08:9e:01:87:d8:58
+        name: R03-U05-N01
+        ip: 10.103.0.9
+      - mac: 08:9e:01:a7:9c:30
+        name: R03-U05-N02
+        ip: 10.103.0.10
+      - mac: 08:9e:01:a7:aa:7f
+        name: R03-U05-N03
+        ip: 10.103.0.11
+      - mac: 08:9e:01:93:60:00
+        name: R03-U05-N04
+        ip: 10.103.0.12
+      - mac: 08:9e:01:9b:20:fc
+        name: R03-U07-N01
+        ip: 10.103.0.13
+      - mac: 08:9e:01:93:5f:43
+        name: R03-U07-N02
+        ip: 10.103.0.14
+      - mac: 08:9e:01:87:d7:f8
+        name: R03-U07-N03
+        ip: 10.103.0.15
+      - mac: 08:9e:01:a7:aa:c7
+        name: R03-U07-N04
+        ip: 10.103.0.16
+      - mac: 08:9e:01:a7:a0:9e
+        name: R03-U09-N01
+        ip: 10.103.0.17
+      - mac: 08:9e:01:87:d8:9d
+        name: R03-U09-N02
+        ip: 10.103.0.18
+      - mac: 08:9e:01:87:d8:6a
+        name: R03-U09-N03
+        ip: 10.103.0.19
+      - mac: 08:9e:01:87:d8:c1
+        name: R03-U09-N04
+        ip: 10.103.0.20
+      - mac: 08:9e:01:87:d8:79
+        name: R03-U11-N01
+        ip: 10.103.0.21
+      - mac: 08:9e:01:87:d8:a6
+        name: R03-U11-N02
+        ip: 10.103.0.22
+      - mac: 08:9e:01:a7:aa:9a
+        name: R03-U11-N03
+        ip: 10.103.0.23
+      - mac: 08:9e:01:87:d8:82
+        name: R03-U11-N04
+        ip: 10.103.0.24
+      - mac: 08:9e:01:93:60:1b
+        name: R03-U13-N01
+        ip: 10.103.0.25
+      - mac: 08:9e:01:a7:aa:be
+        name: R03-U13-N02
+        ip: 10.103.0.26
+      - mac: 08:9e:01:a7:aa:73
+        name: R03-U13-N03
+        ip: 10.103.0.27
+      - mac: 08:9e:01:dc:70:ad
+        name: R03-U13-N04
+        ip: 10.103.0.28
+      - mac: 08:9e:01:a7:aa:8e
+        name: R03-U15-N01
+        ip: 10.103.0.29
+      - mac: 08:9e:01:a7:aa:64
+        name: R03-U15-N02
+        ip: 10.103.0.30
+      - mac: 08:9e:01:a7:aa:f7
+        name: R03-U15-N03
+        ip: 10.103.0.31
+      - mac: 08:9e:01:9b:20:f6
+        name: R03-U15-N04
+        ip: 10.103.0.32
+      - mac: 08:9e:01:87:d8:6d
+        name: R03-U17-N01
+        ip: 10.103.0.33
+      - mac: 08:9e:01:a7:aa:f4
+        name: R03-U17-N02
+        ip: 10.103.0.34
+      - mac: 08:9e:01:93:60:1e
+        name: R03-U17-N03
+        ip: 10.103.0.35
+      - mac: 08:9e:01:93:5f:4f
+        name: R03-U17-N04
+        ip: 10.103.0.36
+      - mac: 08:9e:01:a7:ab:06
+        name: R03-U19-N01
+        ip: 10.103.0.37
+      - mac: 08:9e:01:93:5f:f4
+        name: R03-U19-N02
+        ip: 10.103.0.38
+      - mac: 08:9e:01:87:d8:1c
+        name: R03-U19-N03
+        ip: 10.103.0.39
+      - mac: 08:9e:01:87:d7:fe
+        name: R03-U19-N04
+        ip: 10.103.0.40
+      - mac: 08:9e:01:93:5f:a9
+        name: R03-U21-N01
+        ip: 10.103.0.41
+      - mac: 08:9e:01:a7:aa:70
+        name: R03-U21-N02
+        ip: 10.103.0.42
+      - mac: 08:9e:01:a7:aa:91
+        name: R03-U21-N03
+        ip: 10.103.0.43
+      - mac: 08:9e:01:a7:aa:b5
+        name: R03-U21-N04
+        ip: 10.103.0.44
+      - mac: 08:9e:01:93:5f:55
+        name: R03-U23-N01
+        ip: 10.103.0.45
+      - mac: 08:9e:01:a7:aa:ca
+        name: R03-U23-N02
+        ip: 10.103.0.46
+      - mac: 08:9e:01:a7:aa:85
+        name: R03-U23-N03
+        ip: 10.103.0.47
+      - mac: 08:9e:01:a7:aa:82
+        name: R03-U23-N04
+        ip: 10.103.0.48
+      - mac: 08:9e:01:a7:aa:6d
+        name: R03-U25-N01
+        ip: 10.103.0.49
+      - mac: 08:9e:01:a7:aa:fa
+        name: R03-U25-N02
+        ip: 10.103.0.50
+      - mac: 08:9e:01:a7:aa:79
+        name: R03-U25-N03
+        ip: 10.103.0.51
+      - mac: 08:9e:01:a7:aa:61
+        name: R03-U25-N04
+        ip: 10.103.0.52
+      - mac: 08:9e:01:87:d8:bb
+        name: R03-U27-N01
+        ip: 10.103.0.53
+      - mac: 08:9e:01:93:5f:28
+        name: R03-U27-N02
+        ip: 10.103.0.54
+      - mac: 08:9e:01:93:5f:10
+        name: R03-U27-N03
+        ip: 10.103.0.55
+      - mac: 08:9e:01:93:5f:cd
+        name: R03-U27-N04
+        ip: 10.103.0.56
+      - mac: 08:9e:01:93:5f:a6
+        name: R03-U29-N01
+        ip: 10.103.0.57
+      - mac: 08:9e:01:93:5f:73
+        name: R03-U29-N02
+        ip: 10.103.0.58
+      - mac: 08:9e:01:93:5e:ec
+        name: R03-U29-N03
+        ip: 10.103.0.59
+      - mac: 08:9e:01:93:5f:22
+        name: R03-U29-N04
+        ip: 10.103.0.60
+      - mac: 08:9e:01:93:5f:d0
+        name: R03-U31-N01
+        ip: 10.103.0.61
+      - mac: 08:9e:01:93:5f:be
+        name: R03-U31-N02
+        ip: 10.103.0.62
+      - mac: 08:9e:01:93:5f:13
+        name: R03-U31-N03
+        ip: 10.103.0.63
+      - mac: 08:9e:01:93:5e:e3
+        name: R03-U31-N04
+        ip: 10.103.0.64
+      - mac: 08:9e:01:93:60:36
+        name: R03-U33-N01
+        ip: 10.103.0.65
+      - mac: 08:9e:01:87:d8:ca
+        name: R03-U33-N02
+        ip: 10.103.0.66
+      - mac: 08:9e:01:93:5f:61
+        name: R03-U33-N03
+        ip: 10.103.0.67
+      - mac: 08:9e:01:93:5e:e9
+        name: R03-U33-N04
+        ip: 10.103.0.68
+  rack_4:
+    name: 'rack_4'
+    ip: '10.104.0.0'
+    netmask: 255.255.255.0
+    routers: 10.104.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
+    dhcp_hosts:
+      - mac: 08:9e:01:93:5f:df
+        name: R04-U01-N01
+        ip: 10.104.0.1
+      - mac: 08:9e:01:87:d8:8b
+        name: R04-U01-N02
+        ip: 10.104.0.2
+      - mac: 08:9e:01:93:5f:46
+        name: R04-U01-N03
+        ip: 10.104.0.3
+      - mac: 08:9e:01:93:5f:04
+        name: R04-U01-N04
+        ip: 10.104.0.4
+      - mac: 08:9e:01:93:60:2d
+        name: R04-U03-N01
+        ip: 10.104.0.5
+      - mac: 08:9e:01:87:d8:be
+        name: R04-U03-N02
+        ip: 10.104.0.6
+      - mac: 08:9e:01:93:5f:c4
+        name: R04-U03-N03
+        ip: 10.104.0.7
+      - mac: 08:9e:01:93:5e:f8
+        name: R04-U03-N04
+        ip: 10.104.0.8
+      - mac: 08:9e:01:93:5f:97
+        name: R04-U05-N01
+        ip: 10.104.0.9
+      - mac: 08:9e:01:93:5f:31
+        name: R04-U05-N02
+        ip: 10.104.0.10
+      - mac: 08:9e:01:93:5e:f5
+        name: R04-U05-N03
+        ip: 10.104.0.11
+      - mac: 08:9e:01:93:5f:64
+        name: R04-U05-N04
+        ip: 10.104.0.12
+      - mac: 08:9e:01:93:5f:af
+        name: R04-U07-N01
+        ip: 10.104.0.13
+      - mac: 08:9e:01:dc:70:b0
+        name: R04-U07-N02
+        ip: 10.104.0.14
+      - mac: 08:9e:01:93:5f:94
+        name: R04-U07-N03
+        ip: 10.104.0.15
+      - mac: 08:9e:01:a7:aa:88
+        name: R04-U07-N04
+        ip: 10.104.0.16
+      - mac: 08:9e:01:93:5f:7c
+        name: R04-U09-N01
+        ip: 10.104.0.17
+      - mac: 08:9e:01:93:60:33
+        name: R04-U09-N02
+        ip: 10.104.0.18
+      - mac: 08:9e:01:93:5f:37
+        name: R04-U09-N03
+        ip: 10.104.0.19
+      - mac: 08:9e:01:93:60:24
+        name: R04-U09-N04
+        ip: 10.104.0.20
+      - mac: 08:9e:01:a7:aa:ee
+        name: R04-U11-N01
+        ip: 10.104.0.21
+      - mac: 08:9e:01:87:d8:73
+        name: R04-U11-N02
+        ip: 10.104.0.22
+      - mac: 08:9e:01:87:d7:e3
+        name: R04-U11-N03
+        ip: 10.104.0.23
+      - mac: 08:9e:01:93:60:09
+        name: R04-U11-N04
+        ip: 10.104.0.24
+      - mac: 08:9e:01:93:5f:bb
+        name: R04-U13-N01
+        ip: 10.104.0.25
+      - mac: 08:9e:01:87:d8:85
+        name: R04-U13-N02
+        ip: 10.104.0.26
+      - mac: 08:9e:01:93:5f:34
+        name: R04-U13-N03
+        ip: 10.104.0.27
+      - mac: 08:9e:01:93:60:39
+        name: R04-U13-N04
+        ip: 10.104.0.28
+      - mac: 08:9e:01:87:d8:91
+        name: R04-U15-N01
+        ip: 10.104.0.29
+      - mac: 08:9e:01:87:d8:a9
+        name: R04-U15-N02
+        ip: 10.104.0.30
+      - mac: 08:9e:01:87:d8:25
+        name: R04-U15-N03
+        ip: 10.104.0.31
+      - mac: 08:9e:01:87:d8:07
+        name: R04-U15-N04
+        ip: 10.104.0.32
+      - mac: 08:9e:01:a7:a0:a7
+        name: R04-U17-N01
+        ip: 10.104.0.33
+      - mac: 08:9e:01:a7:a0:9b
+        name: R04-U17-N02
+        ip: 10.104.0.34
+      - mac: 08:9e:01:a7:aa:c1
+        name: R04-U17-N03
+        ip: 10.104.0.35
+      - mac: 08:9e:01:93:5f:1c
+        name: R04-U17-N04
+        ip: 10.104.0.36
+      - mac: 08:9e:01:87:d8:b8
+        name: R04-U19-N01
+        ip: 10.104.0.37
+      - mac: 08:9e:01:87:d8:8e
+        name: R04-U19-N04
+        ip: 10.104.0.38
+      - mac: 08:9e:01:a7:aa:af
+        name: R04-U19-N03
+        ip: 10.104.0.39
+      - mac: 08:9e:01:87:d8:c7
+        name: R04-U19-N02
+        ip: 10.104.0.40
+      - mac: 08:9e:01:93:be:fd
+        name: R04-U21-N01
+        ip: 10.104.0.41
+      - mac: 08:9e:01:a7:aa:d9
+        name: R04-U21-N02
+        ip: 10.104.0.42
+      - mac: 08:9e:01:a7:aa:b2
+        name: R04-U21-N03
+        ip: 10.104.0.43
+      - mac: 08:9e:01:a7:aa:e2
+        name: R04-U21-N04
+        ip: 10.104.0.44
+      - mac: 08:9e:01:87:d8:7c
+        name: R04-U23-N01
+        ip: 10.104.0.45
+      - mac: 08:9e:01:93:5f:eb
+        name: R04-U23-N02
+        ip: 10.104.0.46
+      - mac: 08:9e:01:93:5f:19
+        name: R04-U23-N03
+        ip: 10.104.0.47
+      - mac: 08:9e:01:87:d8:55
+        name: R04-U23-N04
+        ip: 10.104.0.48
+      - mac: 08:9e:01:87:d8:64
+        name: R04-U25-N01
+        ip: 10.104.0.49
+      - mac: 08:9e:01:87:d8:61
+        name: R04-U25-N02
+        ip: 10.104.0.50
+      - mac: 08:9e:01:87:d8:97
+        name: R04-U25-N03
+        ip: 10.104.0.51
+      - mac: 08:9e:01:87:d8:49
+        name: R04-U25-N04
+        ip: 10.104.0.52
+      - mac: 08:9e:01:87:d8:43
+        name: R04-U27-N01
+        ip: 10.104.0.53
+      - mac: 08:9e:01:93:5f:40
+        name: R04-U27-N02
+        ip: 10.104.0.54
+      - mac: 08:9e:01:87:d8:3d
+        name: R04-U27-N03
+        ip: 10.104.0.55
+      - mac: 08:9e:01:87:d8:22
+        name: R04-U27-N04
+        ip: 10.104.0.56
+      - mac: 08:9e:01:a7:aa:cd
+        name: R04-U29-N01
+        ip: 10.104.0.57
+      - mac: 08:9e:01:93:5e:fe
+        name: R04-U29-N02
+        ip: 10.104.0.58
+      - mac: 08:9e:01:9b:21:8c
+        name: R04-U29-N03
+        ip: 10.104.0.59
+      - mac: 08:9e:01:93:5f:22
+        name: R04-U29-N04
+        ip: 10.104.0.60
+      - mac: 08:9e:01:93:5f:79
+        name: R04-U31-N01
+        ip: 10.104.0.61
+      - mac: 08:9e:01:93:5f:3a
+        name: R04-U31-N02
+        ip: 10.104.0.62
+      - mac: 08:9e:01:93:5f:88
+        name: R04-U31-N03
+        ip: 10.104.0.63
+      - mac: 08:9e:01:93:5e:e0
+        name: R04-U31-N04
+        ip: 10.104.0.64
+      - mac: 08:9e:01:93:5f:07
+        name: R04-U33-N01
+        ip: 10.104.0.65
+      - mac: 08:9e:01:93:5f:3d
+        name: R04-U33-N02
+        ip: 10.104.0.66
+      - mac: 08:9e:01:87:d7:ec
+        name: R04-U33-N03
+        ip: 10.104.0.67
+      - mac: 08:9e:01:a7:aa:ac
+        name: R04-U33-N04
+        ip: 10.104.0.68
+  rack_5:
+    name: 'rack_5'
+    ip: '10.105.0.0'
+    netmask: 255.255.255.0
+#    range_begin: 10.6.0.1
+#    range_end: 10.6.0.128
+    routers: 10.105.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
+    dhcp_hosts:
+      - mac: 98:4b:e1:6d:05:3c
+        name: R05-U23
+        ip: 10.105.0.23
+      - mac: 78:e3:b5:07:24:ec
+        name: R05-U27
+        ip: 10.105.0.27 
+  rack_1:
+    name: 'rack_1'
+    ip: '10.101.0.0'
+    netmask: 255.255.255.0
+#    range_begin: 10.6.0.1
+#    range_end: 10.6.0.128
+    routers: 10.101.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
+    dhcp_hosts:
+      - mac: 08:9e:01:93:5e:dd
+        name: R01-U21-N01
+        ip: 10.101.0.1
+      - mac: 08:9e:01:a7:aa:a9
+        name: R01-U21-N02
+        ip: 10.101.0.2
+      - mac: 08:9e:01:93:5f:0a
+        name: R01-U21-N03
+        ip: 10.101.0.3
+      - mac: 08:9e:01:93:5f:49
+        name: R01-U21-N04
+        ip: 10.101.0.4
+      - mac: 08:9e:01:93:5f:16
+        name: R01-U23-N01
+        ip: 10.101.0.5
+      - mac: 08:9e:01:93:5f:82
+        name: R01-U23-N02
+        ip: 10.101.0.6
+      - mac: 08:9e:01:a7:aa:8b
+        name: R01-U23-N03
+        ip: 10.101.0.7
+      - mac: 08:9e:01:a7:9d:8c
+        name: R01-U23-N04
+        ip: 10.101.0.8
+      - mac: 08:9e:01:a7:aa:f1
+        name: R01-U25-N01
+        ip: 10.101.0.9
+      - mac: 08:9e:01:a7:aa:97
+        name: R01-U25-N02
+        ip: 10.101.0.10
+      - mac: 08:9e:01:a7:aa:94
+        name: R01-U25-N03
+        ip: 10.101.0.11
+      - mac: 08:9e:01:87:d8:70
+        name: R01-U25-N04
+        ip: 10.101.0.12
+      - mac: 08:9e:01:87:d8:7f
+        name: R01-U27-N01
+        ip: 10.101.0.13
+      - mac: 08:9e:01:93:5f:5b
+        name: R01-U27-N02
+        ip: 10.101.0.14
+      - mac: 08:9e:01:93:5e:fb
+        name: R01-U27-N03
+        ip: 10.101.0.15
+      - mac: 08:9e:01:93:5f:6a
+        name: R01-U27-N04
+        ip: 10.101.0.16
+      - mac: 08:9e:01:93:60:18
+        name: R01-U29-N01
+        ip: 10.101.0.17
+      - mac: 08:9e:01:93:5e:da
+        name: R01-U29-N02
+        ip: 10.101.0.18
+      - mac: 08:9e:01:93:5f:52
+        name: R01-U29-N03
+        ip: 10.101.0.19
+      - mac: 08:9e:01:a7:aa:76
+        name: R01-U29-N04
+        ip: 10.101.0.20
+      - mac: 08:9e:01:93:60:03
+        name: R01-U31-N01
+        ip: 10.101.0.21
+      - mac: 08:9e:01:93:5f:ee
+        name: R01-U31-N02
+        ip: 10.101.0.22
+      - mac: 08:9e:01:93:5f:a3
+        name: R01-U31-N03
+        ip: 10.101.0.23
+      - mac: 08:9e:01:93:60:21
+        name: R01-U31-N04
+        ip: 10.101.0.24
+      - mac: 08:9e:01:93:5f:7f
+        name: R01-U33-N01
+        ip: 10.101.0.25
+      - mac: 08:9e:01:93:5f:f7
+        name: R01-U33-N02
+        ip: 10.101.0.26
+      - mac: 08:9e:01:93:5f:1f
+        name: R01-U33-N03
+        ip: 10.101.0.27
+      - mac: 08:9e:01:93:5f:6d
+        name: R01-U33-N04
+        ip: 10.101.0.28
+      - mac: 08:9e:01:87:d8:af
+        name: R01-U35-N01
+        ip: 10.101.0.29
+      - mac: 08:9e:01:87:d8:9a
+        name: R01-U35-N02
+        ip: 10.101.0.30
+      - mac: 08:9e:01:87:d8:31
+        name: R01-U35-N03
+        ip: 10.101.0.31
+      - mac: 08:9e:01:87:d8:88
+        name: R01-U35-N04
+        ip: 10.101.0.32
+      - mac: 08:9e:01:a7:aa:d6
+        name: R01-U37-N01
+        ip: 10.101.0.33
+      - mac: 08:9e:01:a7:aa:e5
+        name: R01-U37-N02
+        ip: 10.101.0.34
+      - mac: 08:9e:01:93:5f:b8
+        name: R01-U37-N03
+        ip: 10.101.0.35
+      - mac: 08:9e:01:93:5e:f2
+        name: R01-U37-N04
+        ip: 10.101.0.36
+  rack_2:
+    name: 'rack_2'
+    ip: '10.102.0.0'
+    netmask: 255.255.255.0
+#    range_begin: 10.6.0.1
+#    range_end: 10.6.0.128
+    routers: 10.102.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
+    dhcp_hosts:
+      - mac: 08:9e:01:93:5f:b2
+        name: R02-U21-N01
+        ip: 10.102.0.1
+      - mac: 08:9e:01:a7:aa:c4
+        name: R02-U21-N02
+        ip: 10.102.0.2
+      - mac: 08:9e:01:93:60:0c
+        name: R02-U21-N03
+        ip: 10.102.0.3
+      - mac: 08:9e:01:93:60:30
+        name: R02-U21-N04
+        ip: 10.102.0.4
+      - mac: 08:9e:01:a7:aa:d0
+        name: R02-U23-N01
+        ip: 10.102.0.5
+      - mac: 08:9e:01:a7:aa:a3
+        name: R02-U23-N02
+        ip: 10.102.0.6
+      - mac: 08:9e:01:93:5f:d9
+        name: R02-U23-N03
+        ip: 10.102.0.7
+      - mac: 08:9e:01:93:5f:8b
+        name: R02-U23-N04
+        ip: 10.102.0.8
+      - mac: 08:9e:01:a7:aa:e8
+        name: R02-U25-N01
+        ip: 10.102.0.9
+      - mac: 08:9e:01:93:5f:01
+        name: R02-U25-N02
+        ip: 10.102.0.10
+      - mac: 08:9e:01:a7:ab:09
+        name: R02-U25-N03
+        ip: 10.102.0.11
+      - mac: 08:9e:01:a7:aa:6a
+        name: R02-U25-N04
+        ip: 10.102.0.12
+      - mac: 08:9e:01:87:d8:5b
+        name: R02-U27-N01
+        ip: 10.102.0.13
+      - mac: 08:9e:01:87:d8:a3
+        name: R02-U27-N02
+        ip: 10.102.0.14
+      - mac: 08:9e:01:a7:aa:b8
+        name: R02-U27-N03
+        ip: 10.102.0.15
+      - mac: 08:9e:01:87:d8:a0
+        name: R02-U27-N04
+        ip: 10.102.0.16
+      - mac: 08:9e:01:87:d8:10
+        name: R02-U29-N01
+        ip: 10.102.0.17
+      - mac: 08:9e:01:87:d8:28
+        name: R02-U29-N02
+        ip: 10.102.0.18
+      - mac: 08:9e:01:a7:aa:dc
+        name: R02-U29-N03
+        ip: 10.102.0.19
+      - mac: 04:7d:7b:86:ae:94
+        name: R02-U29-N04
+        ip: 10.102.0.20
+      - mac: 08:9e:01:93:60:3c
+        name: R02-U31-N01
+        ip: 10.102.0.21
+      - mac: 08:9e:01:93:5f:2e
+        name: R02-U31-N02
+        ip: 10.102.0.22
+      - mac: 08:9e:01:93:5f:d6
+        name: R02-U31-N03
+        ip: 10.102.0.23
+      - mac: 08:9e:01:93:5f:dc
+        name: R02-U31-N04
+        ip: 10.102.0.24
+      - mac: 08:9e:01:93:5f:e5
+        name: R02-U33-N01
+        ip: 10.102.0.25
+      - mac: 08:9e:01:93:5f:4c
+        name: R02-U33-N02
+        ip: 10.102.0.26
+      - mac: 08:9e:01:93:5f:70
+        name: R02-U33-N03
+        ip: 10.102.0.27
+      - mac: 08:9e:01:93:5f:c7
+        name: R02-U33-N04
+        ip: 10.102.0.28
+      - mac: 08:9e:01:87:d7:e9
+        name: R02-U35-N01
+        ip: 10.102.0.29
+      - mac: 08:9e:01:93:5f:e2
+        name: R02-U35-N02
+        ip: 10.102.0.30
+      - mac: 08:9e:01:93:5f:91
+        name: R02-U35-N03
+        ip: 10.102.0.31
+      - mac: 08:9e:01:93:60:2a
+        name: R02-U35-N04
+        ip: 10.102.0.32
+      - mac: 08:9e:01:93:5f:5e
+        name: R02-U37-N01
+        ip: 10.102.0.33
+      - mac: 08:9e:01:93:5e:ef
+        name: R02-U37-N02
+        ip: 10.102.0.34
+      - mac: 08:9e:01:a7:a0:95
+        name: R02-U37-N03
+        ip: 10.102.0.35
+      - mac: 08:9e:01:87:d8:40
+        name: R02-U37-N04
+        ip: 10.102.0.36

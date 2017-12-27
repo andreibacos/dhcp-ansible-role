@@ -81,7 +81,7 @@ subnet {{ subnet.ip }} netmask {{ subnet.netmask }} {
 {% for host in subnet.dhcp_hosts %}
 host {{ host.name }} {
   hardware ethernet {{ host.mac }};
-  fixed-address {{ subnet.ip.split('.')[0:3] | join('.') }}.{{ '%d'|format(host.name[-2:] | int) }};
+  fixed-address {% if host.ip is defined %}{{ host.ip }}{% else %}{{ subnet.ip.split('.')[0:3] | join('.') }}.{{ '%d'|format(host.name[-2:] | int) }}{% endif %};
 }
 {% endfor %}
 {% endif %}

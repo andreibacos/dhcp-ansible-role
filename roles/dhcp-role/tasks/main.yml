@@ -38,3 +38,5 @@
 
 - name: ensure dhcp service is started and enabled on boot
   service: name={{ dhcp_service }} state=started enabled=true
+
+- meta: flush_handlers
