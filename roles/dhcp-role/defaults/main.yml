@@ -23,6 +23,7 @@ dhcp_subnet_names:
   - rack_5
   - rack_1
   - rack_2
+  - rack_7
 
 dhcp_subnets:
   rack_6:
@@ -476,7 +477,7 @@ dhcp_subnets:
       - mac: 08:9e:01:9b:21:8c
         name: R04-U29-N03
         ip: 10.104.0.59
-      - mac: 08:9e:01:93:5f:22
+      - mac: 08:9e:01:93:60:0f
         name: R04-U29-N04
         ip: 10.104.0.60
       - mac: 08:9e:01:93:5f:79
@@ -513,6 +514,39 @@ dhcp_subnets:
     default_lease_time: 86400
     max_lease_time: 86400
     dhcp_hosts:
+      - mac: EC:B1:D7:86:7C:3A
+        name: R05-U05
+        ip: 10.105.0.5
+      - mac: EC:B1:D7:86:7C:86
+        name: R05-U06
+        ip: 10.105.0.6
+      - mac: 38:63:BB:32:8C:E8
+        name: R05-U07
+        ip: 10.105.0.7
+      - mac: 38:63:BB:32:8F:E6
+        name: R05-U08
+        ip: 10.105.0.8
+      - mac: 38:63:BB:32:0D:6C
+        name: R05-U09
+        ip: 10.105.0.9
+      - mac: 38:63:BB:32:9F:0C
+        name: R05-U10
+        ip: 10.105.0.10
+      - mac: 38:63:BB:32:9F:27
+        name: R05-U11
+        ip: 10.105.0.11
+      - mac: 38:63:BB:32:DD:07
+        name: R05-U12
+        ip: 10.105.0.12
+      - mac: 2C:59:E5:9A:76:47
+        name: R05-U13
+        ip: 10.105.0.13
+      - mac: D8:D3:85:63:89:D8
+        name: R05-U15-U18
+        ip: 10.105.0.15
+      - mac: D8:D3:85:C1:64:84
+        name: R05-U19-U22
+        ip: 10.105.0.19
       - mac: 98:4b:e1:6d:05:3c
         name: R05-U23
         ip: 10.105.0.23
@@ -755,3 +789,44 @@ dhcp_subnets:
       - mac: 08:9e:01:87:d8:40
         name: R02-U37-N04
         ip: 10.102.0.36
+  rack_7:
+    name: 'rack_7'
+    ip: '10.107.0.0'
+    netmask: 255.255.255.0
+#    range_begin: 10.6.0.1
+#    range_end: 10.6.0.128
+    routers: 10.107.0.252
+    default_lease_time: 86400
+    max_lease_time: 86400
+    dhcp_hosts:
+      - mac: 00:23:7d:d2:cf:0a
+        name: R07-U01-U04
+        ip: 10.107.0.1
+      - mac: 18:a9:05:58:f4:34
+        name: R07-U05-U08
+        ip: 10.107.0.5
+      - mac: 00:23:7d:d2:d4:ae
+        name: R07-U09-U12
+        ip: 10.107.0.9
+##      - mac: -- // --
+##        name: R07-U13-U16
+##        ip: 10.107.0.13
+      - mac: 18:a9:05:58:f7:7a
+        name: R07-U17-U20
+        ip: 10.107.0.17
+      - mac: 00:23:7d:d2:d8:8e
+        name: R07-U21-U24
+        ip: 10.107.0.21
+      - mac: 00:23:7D:D2:D7:D4
+        name: R07-U25-U28
+        ip: 10.107.0.25
+      - mac: 18:A9:05:58:F9:1C
+        name: R07-U29-U32
+        ip: 10.107.0.29
+      - mac: 00:23:7D:D2:D8:76
+        name: R07-U33-U36
+        ip: 10.107.0.33
+      - mac: 78:E3:B5:07:F3:0E
+        name: R07-U37-U40
+        ip: 10.107.0.37
+
